@@ -1,0 +1,25 @@
+---
+argument_specs:
+  main:
+    options:
+      yum_packages:
+        type: list
+        elements: dict
+        options:
+          name:
+            required: true
+            type: str
+          version:
+            type: str
+          allow_downgrade:
+            type: bool
+            default: false
+          lock_timeout:
+            type: int
+            default: 60
+          state:
+            type: str
+            default: present
+            choices:
+              - absent
+              - present

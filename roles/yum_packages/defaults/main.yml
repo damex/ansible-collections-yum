@@ -1,0 +1,5 @@
+---
+yum_packages: [] # noqa: var-naming[no-role-prefix]
+yum_packages_state: present
+yum_packages_allow_downgrade: false
+yum_packages_lock_timeout: 60

@@ -1,0 +1,13 @@
+---
+- name: Ensure yum packages
+  ansible.builtin.include_tasks: package.yml
+  vars:
+    yum_package_name: "{{ yum_package.name }}"
+    yum_package_version: "{{ yum_package.version | default('') }}"
+    yum_package_allow_downgrade: "{{ yum_package.allow_downgrade | default(yum_packages_allow_downgrade) }}"
+    yum_package_lock_timeout: "{{ yum_package.lock_timeout | default(yum_packages_lock_timeout) }}"
+    yum_package_state: "{{ yum_package.state | default(yum_packages_state) }}"
+  loop: "{{ yum_packages }}"
+  loop_control:
+    label: "{{ yum_package_name }}"
+    loop_var: yum_package

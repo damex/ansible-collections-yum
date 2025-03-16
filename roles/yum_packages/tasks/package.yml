@@ -1,0 +1,9 @@
+---
+- name: Ensure yum package {{ yum_package_name }}
+  ansible.builtin.dnf:
+    name: "{% if yum_package_version and yum_package_version | length and yum_package_version != 'latest' %}{{ yum_package_name }}-{{ yum_package_version }}{% else %}{{ yum_package_name }}{% endif %}"
+    allow_downgrade: "{{ yum_package_allow_downgrade }}"
+    lock_timeout: "{{ yum_package_lock_timeout }}"
+    state: "{% if yum_package_version == 'latest' and yum_package_state == 'present' %}latest{% else %}{{ yum_package_state }}{% endif %}"
+    use_backend: "{{ yum_packages_use_backend | default(omit) }}"
+  become: true
