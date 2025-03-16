@@ -1,0 +1,16 @@
+---
+namespace: damex
+name: yum
+version: 1.0.0
+readme: README.md
+authors:
+  - Roman Kuzmitskii <ansible@damex.org>
+description: yum collection
+license_file: LICENSE
+tags:
+  - yum
+  - linux
+  - rpm
+  - system
+repository: https://github.com/damex/ansible-collections-yum
+issues: https://github.com/damex/ansible-collections-yum/issues
