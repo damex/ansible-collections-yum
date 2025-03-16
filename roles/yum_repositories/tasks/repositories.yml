@@ -1,0 +1,15 @@
+---
+- name: Ensure yum repositories
+  ansible.builtin.include_tasks: repository.yml
+  vars:
+    yum_repository_name: "{{ yum_repository.name }}"
+    yum_repository_description: "{{ yum_repository.description | default(yum_repository_name) }}"
+    yum_repository_file: "{{ yum_repository.file | default(yum_repository_name) }}"
+    yum_repository_enabled: "{{ yum_repository.enabled | default(yum_repositories_enabled) }}"
+    yum_repository_baseurl: "{{ yum_repository.baseurl }}"
+    yum_repository_gpgcheck: "{{ yum_repository.gpgcheck | default(yum_repositories_gpgcheck) }}"
+    yum_repository_state: "{{ yum_repository.state | default(yum_repositories_state) }}"
+  loop: "{{ yum_repositories }}"
+  loop_control:
+    label: "{{ yum_repository_name }}"
+    loop_var: yum_repository

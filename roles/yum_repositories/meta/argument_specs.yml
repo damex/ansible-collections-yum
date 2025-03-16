@@ -1,0 +1,28 @@
+---
+argument_specs:
+  main:
+    options:
+      yum_repositories:
+        type: list
+        elements: dict
+        options:
+          name:
+            required: true
+            type: str
+          description:
+            type: str
+          file:
+            type: str
+          enabled:
+            type: bool
+          baseurl:
+            required: true
+            type: str
+          gpgcheck:
+            type: bool
+          state:
+            type: str
+            default: present
+            choices:
+              - absent
+              - present

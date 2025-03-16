@@ -1,0 +1,5 @@
+---
+yum_repositories: [] # noqa: var-naming[no-role-prefix]
+yum_repositories_enabled: true
+yum_repositories_gpgcheck: false
+yum_repositories_state: present

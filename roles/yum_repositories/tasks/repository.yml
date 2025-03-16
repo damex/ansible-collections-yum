@@ -1,0 +1,11 @@
+---
+- name: Ensure yum repository {{ yum_repository_name }}
+  ansible.builtin.yum_repository:
+    name: "{{ yum_repository_name }}"
+    description: "{{ yum_repository_description }}"
+    file: "{{ yum_repository_file }}"
+    enabled: "{{ yum_repository_enabled }}"
+    baseurl: "{{ yum_repository_baseurl }}"
+    gpgcheck: "{{ yum_repository_gpgcheck }}"
+    state: "{{ yum_repository_state }}"
+  become: true
