@@ -9,5 +9,6 @@
     metalink: "{{ yum_repository_metalink }}"
     mirrorlist: "{{ yum_repository_mirrorlist }}"
     gpgcheck: "{{ yum_repository_gpgcheck }}"
+    gpgkey: "{{ yum_repository_gpgkey }}"
     state: "{{ yum_repository_state }}"
   become: true

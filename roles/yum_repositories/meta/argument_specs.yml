@@ -23,6 +23,8 @@ argument_specs:
             type: str
           gpgcheck:
             type: bool
+          gpgkey:
+            type: str
           state:
             type: str
             default: present

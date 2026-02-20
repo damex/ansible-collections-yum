@@ -10,6 +10,7 @@
     yum_repository_metalink: "{{ yum_repository.metalink | default(omit) }}"
     yum_repository_mirrorlist: "{{ yum_repository.mirrorlist | default(omit) }}"
     yum_repository_gpgcheck: "{{ yum_repository.gpgcheck | default(yum_repositories_gpgcheck) }}"
+    yum_repository_gpgkey: "{{ yum_repository.gpgkey | default(omit) }}"
     yum_repository_state: "{{ yum_repository.state | default(yum_repositories_state) }}"
   loop: "{{ yum_repositories }}"
   loop_control:
