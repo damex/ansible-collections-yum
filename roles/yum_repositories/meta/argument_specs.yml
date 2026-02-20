@@ -27,7 +27,6 @@ argument_specs:
             type: str
           state:
             type: str
-            default: present
             choices:
               - absent
               - present
