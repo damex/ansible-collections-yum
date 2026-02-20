@@ -1,4 +1,11 @@
 ---
+- name: Ensure yum packages groups are empty
+  ansible.builtin.set_fact:
+    yum_packages_absent: []
+    yum_packages_unversioned: []
+    yum_packages_versioned: []
+    yum_packages_latest: []
+
 - name: Ensure yum packages are grouped
   ansible.builtin.include_tasks: yum_packages_groups.yml
   vars:
