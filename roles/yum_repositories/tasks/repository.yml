@@ -6,6 +6,8 @@
     file: "{{ yum_repository_file }}"
     enabled: "{{ yum_repository_enabled }}"
     baseurl: "{{ yum_repository_baseurl }}"
+    metalink: "{{ yum_repository_metalink }}"
+    mirrorlist: "{{ yum_repository_mirrorlist }}"
     gpgcheck: "{{ yum_repository_gpgcheck }}"
     state: "{{ yum_repository_state }}"
   become: true

@@ -16,7 +16,10 @@ argument_specs:
           enabled:
             type: bool
           baseurl:
-            required: true
+            type: str
+          metalink:
+            type: str
+          mirrorlist:
             type: str
           gpgcheck:
             type: bool
@@ -26,3 +29,11 @@ argument_specs:
             choices:
               - absent
               - present
+        required_one_of:
+          - - baseurl
+            - metalink
+            - mirrorlist
+        mutually_exclusive:
+          - - baseurl
+            - metalink
+            - mirrorlist
