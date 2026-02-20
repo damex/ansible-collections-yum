@@ -2,7 +2,7 @@
 
 [![](https://github.com/damex/ansible-collections-yum/workflows/linting/badge.svg)](https://github.com/damex/ansible-collections-yum/actions)
 
-The yum collection is designed to be used with any modern Debian Linux derivatives.
+The yum collection is designed to be used with any modern `Fedora` or `Red Hat Enterprise Linux` derivatives.
 
 `Ansible Galaxy` users can add yum collection using the following command:
 
