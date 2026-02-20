@@ -7,6 +7,7 @@
     yum_package_allow_downgrade: "{{ yum_package.allow_downgrade | default(yum_packages_allow_downgrade) }}"
     yum_package_lock_timeout: "{{ yum_package.lock_timeout | default(yum_packages_lock_timeout) }}"
     yum_package_state: "{{ yum_package.state | default(yum_packages_state) }}"
+    yum_package_use_backend: "{{ yum_package.use_backend | default(yum_packages_use_backend) | default(omit) }}"
   loop: "{{ yum_packages }}"
   loop_control:
     label: "{{ yum_package_name }}"

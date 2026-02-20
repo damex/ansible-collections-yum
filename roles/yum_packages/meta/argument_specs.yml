@@ -20,3 +20,7 @@ argument_specs:
             choices:
               - absent
               - present
+          use_backend:
+            type: str
+      yum_packages_use_backend:
+        type: str
