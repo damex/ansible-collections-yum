@@ -1,0 +1,40 @@
+---
+- name: Ensure yum packages are grouped
+  ansible.builtin.include_tasks: yum_packages_groups.yml
+  vars:
+    yum_package_name: "{{ yum_package.name }}"
+    yum_package_version: "{{ yum_package.version | default(omit) }}"
+    yum_package_state: "{{ yum_package.state | default(yum_packages_state) }}"
+  loop: "{{ yum_packages }}"
+  loop_control:
+    label: "{{ yum_package_name }}"
+    loop_var: yum_package
+
+- name: Ensure yum packages
+  module_defaults:
+    ansible.builtin.dnf:
+      allow_downgrade: "{{ yum_packages_allow_downgrade }}"
+      lock_timeout: "{{ yum_packages_lock_timeout }}"
+      use_backend: "{{ yum_packages_use_backend }}"
+  become: true
+  block:
+    - name: Ensure yum packages with absent state
+      ansible.builtin.dnf:
+        name: "{{ yum_packages_absent }}"
+        state: absent
+      when: yum_packages_absent | length > 0
+    - name: Ensure yum packages with unversioned present state
+      ansible.builtin.dnf:
+        name: "{{ yum_packages_unversioned }}"
+        state: present
+      when: yum_packages_unversioned | length > 0
+    - name: Ensure yum packages with versioned present state
+      ansible.builtin.dnf:
+        name: "{{ yum_packages_versioned }}"
+        state: present
+      when: yum_packages_versioned | length > 0
+    - name: Ensure yum packages with latest state # noqa package-latest
+      ansible.builtin.dnf:
+        name: "{{ yum_packages_latest }}"
+        state: latest
+      when: yum_packages_latest | length > 0
