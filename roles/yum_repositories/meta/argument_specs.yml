@@ -30,6 +30,10 @@ argument_specs:
             choices:
               - absent
               - present
+        required_if:
+          - - gpgcheck
+            - true
+            - - gpgkey
         required_one_of:
           - - baseurl
             - metalink
