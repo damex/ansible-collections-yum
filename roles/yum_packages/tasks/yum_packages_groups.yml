@@ -1,0 +1,32 @@
+---
+- name: Ensure yum package is absent {{ yum_package_name }}
+  ansible.builtin.set_fact:
+    yum_packages_absent: "{{ yum_packages_absent + [yum_package_name] }}"
+  when:
+    - yum_package_state == 'absent'
+
+- name: Ensure yum package is unversioned {{ yum_package_name }}
+  ansible.builtin.set_fact:
+    yum_packages_unversioned: "{{ yum_packages_unversioned + [yum_package_name] }}"
+  when:
+    - yum_package_state == 'present'
+    # workaround for omit
+    - yum_package_version is not iterable
+
+- name: Ensure yum package is versioned {{ yum_package_name }}
+  ansible.builtin.set_fact:
+    yum_packages_versioned: "{{ yum_packages_versioned + [yum_package_name + '-' + yum_package_version] }}"
+  when:
+    - yum_package_state == 'present'
+    - yum_package_version is defined
+    # workaround for omit
+    - yum_package_version is iterable
+    - yum_package_version != 'latest'
+
+- name: Ensure yum package is latest {{ yum_package_name }}
+  ansible.builtin.set_fact:
+    yum_packages_latest: "{{ yum_packages_latest + [yum_package_name] }}"
+  when:
+    - yum_package_state == 'present'
+    - yum_package_version is defined
+    - yum_package_version == 'latest'

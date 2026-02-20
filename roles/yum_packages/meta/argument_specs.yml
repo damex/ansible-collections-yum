@@ -11,21 +11,11 @@ argument_specs:
             type: str
           version:
             type: str
-          allow_downgrade:
-            type: bool
-          lock_timeout:
-            type: int
           state:
             type: str
             choices:
               - absent
               - present
-          use_backend:
-            type: str
-            choices:
-              - auto
-              - dnf4
-              - dnf5
       yum_packages_use_backend:
         type: str
         choices:

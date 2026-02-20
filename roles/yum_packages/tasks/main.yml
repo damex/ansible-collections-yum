@@ -5,4 +5,4 @@
     - yum_packages
   block:
     - name: Ensure yum packages
-      ansible.builtin.import_tasks: packages.yml
+      ansible.builtin.import_tasks: yum_packages.yml
