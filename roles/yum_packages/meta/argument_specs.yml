@@ -22,5 +22,13 @@ argument_specs:
               - present
           use_backend:
             type: str
+            choices:
+              - auto
+              - dnf4
+              - dnf5
       yum_packages_use_backend:
         type: str
+        choices:
+          - auto
+          - dnf4
+          - dnf5
