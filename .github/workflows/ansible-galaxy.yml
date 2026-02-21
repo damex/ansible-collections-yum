@@ -19,6 +19,4 @@ jobs:
       - run: pip install --user pipenv
       - run: pipenv install --deploy
       - run: pipenv run build-for-galaxy
-      - run: pipenv run publish-to-galaxy damex-yum-*.tar.gz
-        env:
-          ANSIBLE_GALAXY_SERVER_DEFAULT_TOKEN: ${{ secrets.GALAXY_API_KEY }}
+      - run: pipenv run publish-to-galaxy --api-key ${{ secrets.GALAXY_API_KEY }} damex-yum-*.tar.gz
