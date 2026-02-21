@@ -1,0 +1,9 @@
+---
+- name: Ensure yum cache facts
+  ansible.builtin.setup:
+    filter: ansible_date_time
+
+- name: Ensure yum cache directory state
+  ansible.builtin.stat:
+    path: "{{ yum_cache_directory }}"
+  register: yum_cache_directory_state

@@ -1,0 +1,10 @@
+---
+- name: Ensure yum cache
+  ansible.builtin.debug:
+    msg: Ensuring yum cache
+  notify: Ensure yum cache
+  changed_when: true
+  when: yum_cache_expired
+
+- name: Ensure yum cache is up to date
+  ansible.builtin.meta: flush_handlers

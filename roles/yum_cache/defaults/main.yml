@@ -1,0 +1,3 @@
+---
+yum_cache_directory: /var/cache/dnf
+yum_cache_valid_time: 86400

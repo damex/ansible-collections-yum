@@ -1,0 +1,12 @@
+---
+- name: Ensure yum cache
+  tags:
+    - yum
+    - yum_cache
+  block:
+    - name: Ensure yum cache facts
+      ansible.builtin.import_tasks: yum_cache_facts.yml
+    - name: Ensure yum cache expired
+      ansible.builtin.import_tasks: yum_cache_expired.yml
+    - name: Ensure yum cache
+      ansible.builtin.import_tasks: yum_cache.yml

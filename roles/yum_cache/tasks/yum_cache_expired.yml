@@ -1,0 +1,4 @@
+---
+- name: Ensure yum cache expired
+  ansible.builtin.set_fact:
+    yum_cache_expired: "{{ not yum_cache_directory_state.stat.exists or (ansible_facts['date_time']['epoch'] | int - yum_cache_directory_state.stat.mtime | int) > yum_cache_valid_time | int }}"
