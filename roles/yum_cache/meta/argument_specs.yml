@@ -1,0 +1,8 @@
+---
+argument_specs:
+  main:
+    options:
+      yum_cache_directory:
+        type: path
+      yum_cache_valid_time:
+        type: int

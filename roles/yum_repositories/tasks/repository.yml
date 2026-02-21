@@ -11,4 +11,8 @@
     gpgcheck: "{{ yum_repository_gpgcheck }}"
     gpgkey: "{{ yum_repository_gpgkey }}"
     state: "{{ yum_repository_state }}"
+  notify: Ensure yum cache
   become: true
+
+- name: Ensure yum cache is up to date
+  ansible.builtin.meta: flush_handlers

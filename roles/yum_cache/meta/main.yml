@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Roman Kuzmitskii <ansible@damex.org>
-  description: yum repositories role
+  description: yum cache role
   license: GPLv2
   min_ansible_version: 2.19.0
   platforms:
@@ -11,5 +11,4 @@ galaxy_info:
     - name: EL
       versions:
         - all
-dependencies:
-  - name: damex.yum.yum_cache
+dependencies: []
