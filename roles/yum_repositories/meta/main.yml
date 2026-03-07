@@ -12,4 +12,4 @@ galaxy_info:
       versions:
         - all
 dependencies:
-  - name: damex.yum.yum_cache
+  - role: damex.yum.yum_cache
