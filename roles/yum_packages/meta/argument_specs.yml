@@ -16,6 +16,15 @@ argument_specs:
             choices:
               - absent
               - present
+      yum_packages_state:
+        type: str
+        choices:
+          - absent
+          - present
+      yum_packages_allow_downgrade:
+        type: bool
+      yum_packages_lock_timeout:
+        type: int
       yum_packages_use_backend:
         type: str
         choices:
