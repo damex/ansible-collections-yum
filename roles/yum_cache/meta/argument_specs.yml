@@ -6,3 +6,9 @@ argument_specs:
         type: path
       yum_cache_valid_time:
         type: int
+      yum_cache_use_backend:
+        type: str
+        choices:
+          - auto
+          - dnf4
+          - dnf5

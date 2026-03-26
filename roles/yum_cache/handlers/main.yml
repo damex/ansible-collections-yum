@@ -2,4 +2,5 @@
 - name: Ensure yum cache
   ansible.builtin.dnf:
     update_cache: true
+    use_backend: "{{ yum_cache_use_backend }}"
   become: true
