@@ -2,6 +2,15 @@
 argument_specs:
   main:
     options:
+      yum_repositories_enabled:
+        type: bool
+      yum_repositories_gpgcheck:
+        type: bool
+      yum_repositories_state:
+        type: str
+        choices:
+          - absent
+          - present
       yum_repositories:
         type: list
         elements: dict
