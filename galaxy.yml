@@ -12,5 +12,7 @@ tags:
   - linux
   - rpm
   - system
+dependencies:
+  damex.systemd: "*"
 repository: https://github.com/damex/ansible-collections-yum
 issues: https://github.com/damex/ansible-collections-yum/issues
