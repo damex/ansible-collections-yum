@@ -1,0 +1,9 @@
+---
+- name: Ensure yum automatic package
+  ansible.builtin.include_role:
+    name: damex.yum.yum_packages
+  vars:
+    yum_packages: # noqa: var-naming[no-role-prefix]
+      - name: "{{ yum_automatic_package_name }}"
+        version: "{{ yum_automatic_package_version | default(omit) }}"
+        state: "{{ yum_automatic_package_state }}"

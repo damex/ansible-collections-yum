@@ -1,0 +1,6 @@
+---
+- name: Ensure systemd service {{ yum_automatic_timer_name }}
+  ansible.builtin.include_role:
+    name: damex.systemd.systemd_service
+  vars:
+    systemd_service_name: "{{ yum_automatic_timer_name }}"

@@ -1,0 +1,9 @@
+---
+- name: Ensure yum automatic automatic.conf
+  ansible.builtin.template:
+    src: automatic.conf.j2
+    dest: "{{ yum_automatic_configuration_file }}"
+    owner: "{{ yum_automatic_configuration_file_user }}"
+    group: "{{ yum_automatic_configuration_file_group }}"
+    mode: "{{ yum_automatic_configuration_file_mode }}"
+  become: true

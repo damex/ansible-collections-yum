@@ -1,0 +1,13 @@
+{{ ansible_managed | comment }}
+{% for yum_automatic_section, yum_automatic_options in yum_automatic_configuration.items() %}
+[{{ yum_automatic_section }}]
+{%     for yum_automatic_option, yum_automatic_value in yum_automatic_options.items() %}
+{%         if yum_automatic_value | type_debug == 'bool' %}
+{{ yum_automatic_option }} = {{ yum_automatic_value | string | lower }}
+{%         elif yum_automatic_value is sequence and yum_automatic_value is not string %}
+{{ yum_automatic_option }} = {{ yum_automatic_value | join(', ') }}
+{%         else %}
+{{ yum_automatic_option }} = {{ yum_automatic_value }}
+{%         endif %}
+{%     endfor %}
+{% endfor %}

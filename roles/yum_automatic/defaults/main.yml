@@ -1,0 +1,10 @@
+---
+yum_automatic_package_name: dnf-automatic
+yum_automatic_package_state: present
+yum_automatic_user: root
+yum_automatic_group: root
+yum_automatic_configuration_file: /etc/dnf/automatic.conf
+yum_automatic_configuration_file_user: "{{ yum_automatic_user }}"
+yum_automatic_configuration_file_group: "{{ yum_automatic_group }}"
+yum_automatic_configuration_file_mode: "0644"
+yum_automatic_timer_name: dnf-automatic.timer

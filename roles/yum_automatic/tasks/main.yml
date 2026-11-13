@@ -1,0 +1,12 @@
+---
+- name: Ensure yum automatic
+  tags:
+    - yum
+    - yum_automatic
+  block:
+    - name: Ensure yum automatic package
+      ansible.builtin.import_tasks: package.yml
+    - name: Ensure yum automatic automatic.conf
+      ansible.builtin.import_tasks: automatic.conf.yml
+    - name: Ensure yum automatic systemd service
+      ansible.builtin.import_tasks: systemd_service.yml

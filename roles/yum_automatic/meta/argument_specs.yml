@@ -1,0 +1,420 @@
+---
+argument_specs:
+  main:
+    options:
+      yum_automatic_package_name:
+        type: str
+      yum_automatic_package_version:
+        type: str
+      yum_automatic_package_state:
+        type: str
+        choices:
+          - present
+          - absent
+      yum_automatic_user:
+        type: str
+      yum_automatic_group:
+        type: str
+      yum_automatic_configuration_file:
+        type: path
+      yum_automatic_configuration_file_user:
+        type: str
+      yum_automatic_configuration_file_group:
+        type: str
+      yum_automatic_configuration_file_mode:
+        type: str
+      yum_automatic_configuration:
+        required: true
+        type: dict
+        options:
+          commands:
+            type: dict
+            options:
+              apply_updates:
+                type: bool
+              base_config_file:
+                type: path
+              download_updates:
+                type: bool
+              upgrade_type:
+                type: str
+                choices:
+                  - default
+                  - security
+              random_sleep:
+                type: int
+              network_online_timeout:
+                type: int
+              reboot:
+                type: str
+                choices:
+                  - never
+                  - when-changed
+                  - when-needed
+              reboot_command:
+                type: str
+          emitters:
+            type: dict
+            options:
+              emit_via:
+                type: list
+                elements: str
+                choices:
+                  - email
+                  - stdio
+                  - motd
+                  - command
+                  - command_email
+              output_width:
+                type: int
+              system_name:
+                type: str
+              send_error_messages:
+                type: bool
+          email:
+            type: dict
+            options:
+              email_from:
+                type: str
+              email_to:
+                type: list
+                elements: str
+              email_host:
+                type: str
+              email_port:
+                type: int
+              email_tls:
+                type: str
+                choices:
+                  - "yes"
+                  - "no"
+                  - starttls
+          command:
+            type: dict
+            options:
+              command_format:
+                type: str
+              stdin_format:
+                type: str
+          command_email:
+            type: dict
+            options:
+              command_format:
+                type: str
+              stdin_format:
+                type: str
+              email_from:
+                type: str
+              email_to:
+                type: list
+                elements: str
+          base:
+            type: dict
+            options:
+              allow_vendor_change:
+                type: bool
+              arch:
+                type: str
+              assumeno:
+                type: bool
+              assumeyes:
+                type: bool
+              autocheck_running_kernel:
+                type: bool
+              bandwidth:
+                type: str
+              best:
+                type: bool
+              bugtracker_url:
+                type: str
+              cachedir:
+                type: path
+              cacheonly:
+                type: bool
+              check_config_file_age:
+                type: bool
+              clean_requirements_on_remove:
+                type: bool
+              color:
+                type: str
+                choices:
+                  - auto
+                  - never
+                  - always
+              color_list_available_downgrade:
+                type: str
+              color_list_available_install:
+                type: str
+              color_list_available_reinstall:
+                type: str
+              color_list_available_upgrade:
+                type: str
+              color_list_installed_extra:
+                type: str
+              color_list_installed_newer:
+                type: str
+              color_list_installed_older:
+                type: str
+              color_list_installed_reinstall:
+                type: str
+              color_search_match:
+                type: str
+              color_update_installed:
+                type: str
+              color_update_local:
+                type: str
+              color_update_remote:
+                type: str
+              comment:
+                type: str
+              config_file_path:
+                type: path
+              countme:
+                type: bool
+              debug_solver:
+                type: bool
+              debuglevel:
+                type: int
+              defaultyes:
+                type: bool
+              deltarpm:
+                type: bool
+              deltarpm_percentage:
+                type: int
+              destdir:
+                type: path
+              disable_excludes:
+                type: list
+                elements: str
+              diskspacecheck:
+                type: bool
+              enabled:
+                type: bool
+              enablegroups:
+                type: bool
+              errorlevel:
+                type: int
+              exclude:
+                type: list
+                elements: str
+              exclude_from_weak:
+                type: list
+                elements: str
+              exclude_from_weak_autodetect:
+                type: bool
+              excludepkgs:
+                type: list
+                elements: str
+              exit_on_lock:
+                type: bool
+              fastestmirror:
+                type: bool
+              gpgcheck:
+                type: bool
+              gpgkey_dns_verification:
+                type: bool
+              group_package_types:
+                type: list
+                elements: str
+                choices:
+                  - optional
+                  - default
+                  - mandatory
+              history_list_view:
+                type: str
+                choices:
+                  - users
+                  - commands
+                  - single-user-commands
+              history_record:
+                type: bool
+              history_record_packages:
+                type: list
+                elements: str
+              ignorearch:
+                type: bool
+              includepkgs:
+                type: list
+                elements: str
+              install_weak_deps:
+                type: bool
+              installonly_limit:
+                type: int
+              installonlypkgs:
+                type: list
+                elements: str
+              installroot:
+                type: path
+              ip_resolve:
+                type: str
+                choices:
+                  - ipv4
+                  - ipv6
+                  - whatever
+              keepcache:
+                type: bool
+              localpkg_gpgcheck:
+                type: bool
+              log_compress:
+                type: bool
+              log_rotate:
+                type: int
+              log_size:
+                type: str
+              logdir:
+                type: path
+              logfilelevel:
+                type: int
+              max_downloads_per_mirror:
+                type: int
+              max_parallel_downloads:
+                type: int
+              metadata_expire:
+                type: str
+              metadata_timer_sync:
+                type: str
+              minrate:
+                type: str
+              module_obsoletes:
+                type: bool
+              module_platform_id:
+                type: str
+              module_stream_switch:
+                type: bool
+              multilib_policy:
+                type: str
+                choices:
+                  - best
+                  - all
+              obsoletes:
+                type: bool
+              optional_metadata_types:
+                type: list
+                elements: str
+                choices:
+                  - filelists
+              password:
+                type: str
+                no_log: true
+              persistdir:
+                type: path
+              persistence:
+                type: str
+                choices:
+                  - auto
+                  - transient
+                  - persist
+              pluginconfpath:
+                type: list
+                elements: path
+              pluginpath:
+                type: list
+                elements: path
+              plugins:
+                type: bool
+              protect_running_kernel:
+                type: bool
+              protected_packages:
+                type: list
+                elements: str
+              proxy:
+                type: str
+              proxy_auth_method:
+                type: str
+                choices:
+                  - basic
+                  - digest
+                  - negotiate
+                  - ntlm
+                  - digest_ie
+                  - ntlm_wb
+                  - none
+                  - any
+              proxy_password:
+                type: str
+                no_log: true
+              proxy_sslcacert:
+                type: path
+              proxy_sslclientcert:
+                type: path
+              proxy_sslclientkey:
+                type: path
+              proxy_sslverify:
+                type: bool
+              proxy_username:
+                type: str
+              recent:
+                type: int
+              repo_gpgcheck:
+                type: bool
+              reposdir:
+                type: list
+                elements: path
+              reset_nice:
+                type: bool
+              retries:
+                type: int
+              rpmverbosity:
+                type: str
+                choices:
+                  - critical
+                  - emergency
+                  - error
+                  - warn
+                  - info
+                  - debug
+              showdupesfromrepos:
+                type: bool
+              skip_broken:
+                type: bool
+              skip_if_unavailable:
+                type: bool
+              sslcacert:
+                type: path
+              sslclientcert:
+                type: path
+              sslclientkey:
+                type: path
+              sslverify:
+                type: bool
+              sslverifystatus:
+                type: bool
+              strict:
+                type: bool
+              system_cachedir:
+                type: path
+              throttle:
+                type: str
+              timeout:
+                type: str
+              transformdb:
+                type: bool
+              tsflags:
+                type: list
+                elements: str
+                choices:
+                  - noscripts
+                  - test
+                  - notriggers
+                  - nodocs
+                  - justdb
+                  - nocontexts
+                  - nocaps
+                  - nocrypto
+                  - deploops
+              upgrade_group_objects_upgrade:
+                type: bool
+              user_agent:
+                type: str
+              username:
+                type: str
+              usr_drift_protected_paths:
+                type: list
+                elements: str
+              varsdir:
+                type: list
+                elements: path
+              zchunk:
+                type: bool
+      yum_automatic_timer_name:
+        type: str
